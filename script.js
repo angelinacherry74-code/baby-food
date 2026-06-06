@@ -45,3 +45,52 @@ function updateBackButton() {
 document.addEventListener('DOMContentLoaded', () => {
     updateBackButton();
 });
+
+function calculateVaccines() {
+    const birthDateValue = document.getElementById('birthDate').value;
+    if (!birthDateValue) {
+        alert("Будь ласка, оберіть дату");
+        return;
+    }
+
+    const birthDate = new Date(birthDateValue);
+    const resultsDiv = document.getElementById('vaccineResult');
+    
+    // Дані зі схеми МОЗ (місяці та назви щеплень)
+    const schedule = [
+        { age: "2 дні", offsetDays: 2, title: "Туберкульоз (БЦЖ)" },
+        { age: "2 місяці", offsetMonths: 2, title: "Гепатит В, АКДП, Поліомієліт, ХІБ + [Рекомендовано: Ротавірус, Пневмокок]" },
+        { age: "4 місяці", offsetMonths: 4, title: "АКДП, Поліомієліт, ХІБ + [Рекомендовано: Ротавірус, Пневмокок]" },
+        { age: "6 місяців", offsetMonths: 6, title: "Гепатит В, АКДП, Поліомієліт + [Рекомендовано: Ротавірус]" },
+        { age: "12 місяців", offsetMonths: 12, title: "КПК (Кір, паротит, краснуха), ХІБ + [Рекомендовано: Пневмокок, Вітрянка]" },
+        { age: "18 місяців", offsetMonths: 18, title: "АКДП, Поліомієліт" }
+    ];
+
+   let html = '<table><tr><th>Вік</th><th>Дата</th><th>Вакцини</th><th>Нагадування</th></tr>';
+
+    schedule.forEach(item => {
+        let vDate = new Date(birthDate);
+        if (item.offsetDays) {
+            vDate.setDate(vDate.getDate() + item.offsetDays);
+        } else {
+            vDate.setMonth(vDate.getMonth() + item.offsetMonths);
+        }
+        
+        const dateStr = vDate.toLocaleDateString('uk-UA');
+        
+        // Формируем ссылку для Google Календаря
+        // Формат даты для Google: ГГГГММДД
+        const isoDate = vDate.toISOString().replace(/-|:|\.\d\d\d/g, "").split('T')[0];
+        const calendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Щеплення: ' + item.title)}&dates=${isoDate}/${isoDate}&details=Нагадування від вашого помічника з прикорму`;
+
+        html += `<tr>
+            <td>${item.age}</td>
+            <td>${dateStr}</td>
+            <td>${item.title}</td>
+            <td><a href="${calendarUrl}" target="_blank" class="calendar-btn">🗓 Додати</a></td>
+        </tr>`;
+    });
+
+    html += '</table>';
+    resultsDiv.innerHTML = html;
+}

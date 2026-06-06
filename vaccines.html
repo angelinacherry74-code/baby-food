@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Календар щеплень.</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+     <header role="banner">
+        <nav class="main-nav" aria-label="Головна навігація">
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="intro.html">Початок прикорму</a></li>
+                <li><a href="chairs.html">Стільчики</a></li>
+                <li><a href="age-selection.html">Меню прикорму по місяцях</a></li>
+                <li><a href="vaccines.html">Календар щеплень</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main> 
+<section class="vaccine-calculator">
+    <h2>Персональний календар щеплень</h2>
+    <p>Введіть дату народження вашої дитини, щоб отримати графік за рекомендаціями МОЗ:</p>
+    
+    <input type="date" id="birthDate" class="date-input">
+    <button onclick="calculateVaccines()" class="btn">Розрахувати графік</button>
+
+    <div id="vaccineResult" class="result-table">
+        <!-- Тут з'явиться результат -->
+    </div>
+</section>
+    </main>
+    <script src="script.js"></script>
+</body>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Початок прикорму</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header role="banner">
+        <nav class="main-nav" aria-label="Головна навігація">
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="intro.html" aria-current="page">Початок прикорму</a></li>
+                <li><a href="chairs.html">Стільчики</a></li>
+                <li><a href="age-selection.html">Меню прикорму по місяцях</a></li>
+
+                <li><a href="vaccines.html">Календар щеплень</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <button id="back-btn" class="back-button" onclick="goBack()" aria-label="Повернутися до попередньої сторінки" style="display: none;">← Назад</button>
+
+        <section id="intro-welcome" class="container">
+            <h1>Початок прикорму 👶</h1>
+            <p class="fade-in-delayed">Ласкаво просимо на сторінку про перші кроки у світі твердої їжі! Тут ви дізнаєтесь все необхідне для безпечного та здорового введення прикорму вашої дитини.</p>
+            <p class="quote">"Правильний початок — це половина успіху!"</p>
+            <button onclick="showScreen('check-screen')" aria-label="Перевірити готовність до прикорму">Перевірити готовність малюка</button>
+        </section>
+
+        <div id="check-screen" class="container" style="display: none;">
+            <h2>Чи готова малеча? 🧐</h2>
+            <ul class="check-list">
+                <li>Дитині вже виповнилося 6 місяців</li>
+                <li>Вона впевнено тримає голову</li>
+                <li>Проявляє активний інтерес до вашої їжи</li>
+                <li>Вага дитини подвоїлася від народження</li>
+            </ul>
+            <p class="advice">"Якщо ви поставили всі галочки — час починати!"</p>
+            <button onclick="showScreen('recommendations')" aria-label="Перейти до рекомендацій">Далі до рекомендацій</button>
+        </div>
+
+        <div id="recommendations" class="container" style="display: none;">
+            <h2>Рекомендації для початку 💡</h2>
+            <div class="info-block">
+                <h3>Перший прикорм: овочі</h3>
+                <p>Найкращий старт — однокомпонентні овочеві пюре: <strong>кабачок, броколі або цвітна капуста</strong>. Вони мають ніжну клітковину, яка не перевантажує дитячий кишечник.</p>
+            </div>
+
+            <div class="info-block">
+                <h3>Рекомендовані каші (безглютенові)</h3>
+                <p>Починайте з однокомпонентних безмолочних каш:</p>
+                <ul>
+                    <li><strong>Гречана:</strong> лідер за вмістом заліза та білка.</li>
+                    <li><strong>Рисова:</strong> легко засвоюється.</li>
+                    <li><strong>Кукурудзяна:</strong> гіпоалергенна та дуже поживна.</li>
+                </ul>
+            </div>
+
+            <div class="info-block" style="border-left: 4px solid #ff4d4d;">
+                <h3>Чого краще уникати (до 1 року)</h3>
+                <ul>
+                    <li><strong>Сіль та цукор:</strong> зайве навантаження на нирки.</li>
+                    <li><strong>Мед:</strong> небезпека ботулізму для немовлят.</li>
+                    <li><strong>Коров'яче молоко:</strong> занадто важке для травлення.</li>
+                    <li><strong>Соки:</strong> містять забагато цукру.</li>
+                </ul>
+            </div>
+
+            
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2024 Розумний помічник мами</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,3 +1,13 @@
+:root {
+    --bg: #FFF5EA;
+    --brand: #768A6B;
+    --brand-dark: #2d5a27;
+    --text: #4a4a4a;
+    --text-dark: #333333;
+    --surface: #ffffff;
+    --accent: #ff8b80;
+}
+
 html {
   box-sizing: border-box;
   width: 100%;
@@ -5,15 +15,41 @@ html {
 *, *::before, *::after {
   box-sizing: inherit;
 }
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--brand);
+    backdrop-filter: blur(10px);
+    padding: 10px 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    gap: 20px;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+}
 
 body {
-  background-color: #f1c785; /* Ніжний кремовий колір */
+  background-color: var(--bg); /* Ніжний кремовий колір */
   font-family: 'Arial', 'Segoe UI', 'Tahoma', sans-serif;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin: 0;
-  color: #4a4a4a;
+  color: var(--text);
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
@@ -37,7 +73,7 @@ body {
 }
 
 h1 {
-    color: #2d5a27;
+    color: var(--brand-dark);
     font-size: 1.1rem;
     line-height: 1.6;
 }
@@ -73,7 +109,7 @@ p {
 }
 
 button {
-  background-color: #fd654d;
+  background-color: var(--brand);
   color: white;
   border: none;
   padding: 15px 30px;
@@ -93,9 +129,9 @@ button:hover {
   z-index: 20;
   padding: 10px 14px;
   border-radius: 30px;
-  border: 1px solid #2d5a27;
+  border: 1px solid var(--brand-dark);
   background-color: #ffffffcc;
-  color: #2d5a27;
+  color: var(--brand-dark);
   font-weight: 600;
   cursor: pointer;
   display: none;
@@ -106,23 +142,59 @@ button:hover {
   transform: none;
   opacity: 0.95;
 }
+.image-wrapper {
+  margin: 20px 0;
+  text-align: center;
+}
+.main-photo {
+  max-width: 500px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
 /* 1. Заголовок з'являється плавно */
 .fade-in {
-  animation: fadeInOpacity 1.5s ease-in;
+  animation: fadeIn 1.5s ease-in forwards;
 }
 
 /* 2. Текст з'являється трохи пізніше (затримка 1 секунда) */
 .fade-in-delayed {
   opacity: 0; /* Спочатку невидимий */
-  animation: fadeInOpacity 1.5s ease-in forwards;
+  animation: fadeIn 1.5s ease-in forwards;
   animation-delay: 1s;
 }
+.result-table table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background: white;
+    color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+}
 
+.result-table th, .result-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.result-table th {
+    background-color: var(--brand);
+    color: white;
+}
+
+.date-input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
 /* 3. Цитата "випливає" знизу вгору */
 .quote {
   opacity: 0;
   font-style: italic;
-  color: #54ba42;
+  color: var(--brand);
   margin: 20px auto;
   max-width: 760px;
   width: 100%;
@@ -131,11 +203,6 @@ button:hover {
 }
 
 /* 4. Опис самих анімацій */
-@keyframes fadeInOpacity {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -150,15 +217,15 @@ button:hover {
 /* Стиль кнопки, щоб теж з'являлася плавно */
 .fade-in-button {
   opacity: 0;
-  animation: fadeInOpacity 1s ease-in forwards;
+  animation: fadeIn 1s ease-in forwards;
   animation-delay: 3s;
 }
 
 
 .advice {
   font-weight: bold;
-  color: #2d5a27;
-  border-left: 4px solid #ff8b61;
+  color: var(--brand-dark);
+  border-left: 4px solid var(--accent);
   padding-left: 10px;
 }
 .age-grid {
@@ -172,8 +239,8 @@ button:hover {
 
 .age-btn {
   background-color: #f0f0f0;
-  color: #2d5a27;
-  border: 2px solid #2d5a27;
+  color: var(--brand-dark);
+  border: 2px solid var(--brand-dark);
   width: 100%;
   padding: 15px;
   text-align: center;
@@ -192,7 +259,7 @@ button:hover {
 /* Стиль для порад */
 .tip-box {
     background-color: #e8f5e9; /* Світло-зелений ніжний фон */
-    border-left: 5px solid #2d5a27;
+    border-left: 5px solid var(--brand-dark);
     padding: 15px;
     margin: 20px 0;
     border-radius: 8px;
@@ -203,7 +270,6 @@ button:hover {
 /* Робимо список чек-листа красивим */
 .check-list {
     text-align: left;
-    display: block;
     width: 100%;
     max-width: 760px;
     margin: 20px auto;
@@ -222,18 +288,15 @@ button:hover {
     content: "✔️";
     position: absolute;
     left: 0;
-    color: #ff8b61;
+    color: var(--brand);
 }
 .info-block {
-    display: block;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-items: center;
-    text-align: justify;
-    margin: 20px auto;
+    width: 100%;
     max-width: 700px;
-    line-height: 1.6;
+    margin: 20px auto;
     padding: 20px;
+    line-height: 1.6;
+    text-align: justify;
 }
 .text-narrow {
     padding: 0 10px;
@@ -259,4 +322,20 @@ li {
         margin: 10px;
         padding: 15px;
     }
+}
+/* Робимо текст у календарі темним і видимим */
+.vaccine-calculator {
+    color: var(--text-dark); /* Темно-сірий */
+    margin-top: 100px; /* Додаємо відступ, щоб меню не закривало заголовок */
+    text-align: center;
+}
+
+.vaccine-calculator h2 {
+    color: #2e4a3b; /* Ваш фірмовий зелений */
+    margin-bottom: 20px;
+}
+
+/* Налаштування для тексту всередині інпуту */
+#birthDate {
+    color: var(--text-dark);
 }
