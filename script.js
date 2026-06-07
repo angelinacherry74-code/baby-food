@@ -42,9 +42,44 @@ function updateBackButton() {
     backBtn.style.display = currentScreen === 'welcome-screen' ? 'none' : 'inline-flex';
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+const initUI = () => {
     updateBackButton();
-});
+
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.main-nav');
+    if (!navToggle || !nav) return;
+
+    navToggle.addEventListener('click', () => {
+        const opened = nav.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', String(opened));
+        navToggle.textContent = opened ? '✕' : '☰';
+    });
+
+    // Закриваємо меню при кліку на посилання
+    const navLinks = nav.querySelectorAll('a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.textContent = '☰';
+        });
+    });
+
+    // Закриваємо меню при кліку поза ним
+    document.addEventListener('click', (e) => {
+        if (!nav.contains(e.target) && nav.classList.contains('open')) {
+            nav.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.textContent = '☰';
+        }
+    });
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initUI);
+} else {
+    initUI();
+}
 
 function calculateVaccines() {
     const birthDateValue = document.getElementById('birthDate').value;

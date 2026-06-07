@@ -1,341 +1,302 @@
-:root {
-    --bg: #FFF5EA;
-    --brand: #768A6B;
-    --brand-dark: #2d5a27;
-    --text: #4a4a4a;
-    --text-dark: #333333;
-    --surface: #ffffff;
-    --accent: #ff8b80;
+﻿:root {
+  --bg: #FFF5EA;
+  --brand: #768A6B;
+  --brand-dark: #2d5a27;
+  --text: #4a4a4a;
+  --text-dark: #333333;
+  --surface: #ffffff;
+  --accent: #ff8b80;
+  --nav-height: 64px;
 }
-
-html {
-  box-sizing: border-box;
-  width: 100%;
-}
-*, *::before, *::after {
-  box-sizing: inherit;
-}
-.main-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: var(--brand);
-    backdrop-filter: blur(10px);
-    padding: 10px 0;
-    z-index: 1000;
-    transition: all 0.3s ease;
-}
-
-.main-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 15px;
-    gap: 20px;
-}
-
-.main-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px 20px;
-}
-
+ 
+/* ===== Reset ===== */
+html { box-sizing: border-box; width: 100%; }
+*, *::before, *::after { box-sizing: inherit; }
+ 
+/* ===== Body ===== */
 body {
-  background-color: var(--bg); /* Ніжний кремовий колір */
-  font-family: 'Arial', 'Segoe UI', 'Tahoma', sans-serif;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
   margin: 0;
+  font-family: 'Arial', 'Segoe UI', 'Tahoma', sans-serif;
+  background-color: var(--bg);
   color: var(--text);
   min-height: 100vh;
   overflow-x: hidden;
-  overflow-y: auto;
-  padding: 40px 20px;
-  flex-direction: column;
+  padding: 20px;
+  padding-top: calc(var(--nav-height) + 20px);
 }
-
-
+ 
+/* ===== Navigation ===== */
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 0 12px;
+  height: var(--nav-height);
+}
+ 
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 8px 12px;
+  align-items: center;
+}
+ 
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 8px 12px;
+}
+ 
+.main-nav a:hover,
+.main-nav a:focus {
+  background-color: rgba(255,255,255,0.18);
+  border-radius: 6px;
+}
+ 
+.main-nav .nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 26px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+ 
+/* ===== Container ===== */
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-width: 920px;
-    width: 100%;
-    margin: 40px auto;
-    border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    padding: 40px 20px;
-    animation: fadeIn 2s; /* Наша анімація з'явиться за 2 секунди */
+  max-width: 800px;
+  width: 100%;
+  margin: 40px auto;
+  background: var(--surface);
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+  padding: 32px 28px 48px;
+  text-align: center;
+  animation: fadeIn 0.8s ease both;
 }
-
-h1 {
-    color: var(--brand-dark);
-    font-size: 1.1rem;
-    line-height: 1.6;
+ 
+/* ===== Typography ===== */
+h1 { color: var(--brand-dark); font-size: 1.6rem; line-height: 1.3; margin: 0 0 12px; }
+h2 { color: #2e7d32; font-size: 1.25rem; margin: 24px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #e8f5e9; }
+h3 { color: #444; font-size: 1.05rem; margin: 0 0 10px; }
+p  { color: #40493f; font-size: 1rem; line-height: 1.6; margin: 10px auto; max-width: 640px; }
+ 
+strong { color: #1b5e20; }
+ 
+ul { padding-left: 20px; margin: 10px 0; }
+li { margin-bottom: 8px; }
+ 
+hr {
+  display: block;
+  border: none;
+  height: 1px;
+  background-color: #6cc99f;
+  margin: 28px 0;   /* відносно батька — не вилазить за межі */
+  width: 100%;
 }
-
-h2 {
-    color: #2e7d32; /* Зелений колір прикорму */
-    text-align: center;
-    border-bottom: 2px solid #e8f5e9;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-h3 {
-    color: #444;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-}
-
-p {
-    color: #40493f;
-    font-size: 1rem;
-    line-height: 1.5;
-    text-align: center;
-    max-width: 450px;
-    margin-left: auto;
-    margin-right: auto;
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
+ 
+/* ===== Animations ===== */
+@keyframes fadeIn  { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+ 
+.fade-in         { animation: fadeIn 1s ease-in forwards; }
+.fade-in-delayed { opacity: 0; animation: fadeIn 1s ease-in 0.6s forwards; }
+.fade-in-button  { opacity: 0; animation: fadeIn 0.8s ease-in 1s forwards; }
+ 
+/* ===== Buttons ===== */
 button {
   background-color: var(--brand);
   color: white;
   border: none;
-  padding: 15px 30px;
-  border-radius: 25px;
-  font-size: 18px;
+  padding: 12px 20px;
+  border-radius: 20px;
+  font-size: 16px;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.15s ease;
 }
-
-button:hover {
-  transform: scale(1.1); /* Кнопка трішки збільшується при наведенні */
-}
+button:hover { transform: translateY(-1px); }
+ 
 .back-button {
   position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 20;
-  padding: 10px 14px;
-  border-radius: 30px;
+  top: calc(var(--nav-height) + 12px);
+  left: 12px;
+  z-index: 1200;
+  padding: 8px 12px;
+  border-radius: 999px;
   border: 1px solid var(--brand-dark);
-  background-color: #ffffffcc;
+  background: #ffffffcc;
   color: var(--brand-dark);
   font-weight: 600;
-  cursor: pointer;
   display: none;
-  align-items: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
-.back-button:hover {
-  transform: none;
-  opacity: 0.95;
-}
-.image-wrapper {
-  margin: 20px 0;
-  text-align: center;
-}
+ 
+/* ===== Images ===== */
+.image-wrapper { margin: 20px 0; text-align: center; }
 .main-photo {
-  max-width: 500px;
+  width: 100%;
+  max-width: 520px;
   height: auto;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12);
 }
-/* 1. Заголовок з'являється плавно */
-.fade-in {
-  animation: fadeIn 1.5s ease-in forwards;
-}
-
-/* 2. Текст з'являється трохи пізніше (затримка 1 секунда) */
-.fade-in-delayed {
-  opacity: 0; /* Спочатку невидимий */
-  animation: fadeIn 1.5s ease-in forwards;
-  animation-delay: 1s;
-}
-.result-table table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-    background: white;
-    color: #333;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.result-table th, .result-table td {
-    padding: 12px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-.result-table th {
-    background-color: var(--brand);
-    color: white;
-}
-
-.date-input {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-}
-/* 3. Цитата "випливає" знизу вгору */
+ 
+/* ===== Quote ===== */
 .quote {
   opacity: 0;
   font-style: italic;
   color: var(--brand);
-  margin: 20px auto;
+  margin: 18px auto;
   max-width: 760px;
-  width: 100%;
-  animation: slideUp 1s ease-out forwards;
-  animation-delay: 2s; /* З'явиться останньою через 2 секунди */
+  animation: slideUp 0.9s ease-out 0.8s forwards;
 }
-
-/* 4. Опис самих анімацій */
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px); /* Починає на 30 пікселів нижче */
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0); /* Стає на своє місце */
-  }
-}
-
-/* Стиль кнопки, щоб теж з'являлася плавно */
-.fade-in-button {
-  opacity: 0;
-  animation: fadeIn 1s ease-in forwards;
-  animation-delay: 3s;
-}
-
-
+ 
+/* ===== Components ===== */
 .advice {
-  font-weight: bold;
+  font-weight: 700;
   color: var(--brand-dark);
   border-left: 4px solid var(--accent);
   padding-left: 10px;
 }
+ 
 .age-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* дві кнопки в ряд */
-  gap: 15px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
   margin: 20px auto 0;
-  width: 100%;
   max-width: 520px;
 }
-
+ 
 .age-btn {
-  background-color: #f0f0f0;
+  background: #f0f0f0;
   color: var(--brand-dark);
   border: 2px solid var(--brand-dark);
+  padding: 12px;
+  border-radius: 8px;
   width: 100%;
-  padding: 15px;
-  text-align: center;
 }
-
-@media (max-width: 600px) {
-  .age-grid {
-    grid-template-columns: 1fr;
-  }
-  .check-list,
-  .info-block,
-  .tip-box {
-    width: 100%;
-  }
-}
-/* Стиль для порад */
+ 
 .tip-box {
-    background-color: #e8f5e9; /* Світло-зелений ніжний фон */
-    border-left: 5px solid var(--brand-dark);
-    padding: 15px;
-    margin: 20px 0;
-    border-radius: 8px;
+  background-color: #e8f5e9;
+  border-left: 5px solid var(--brand-dark);
+  padding: 14px;
+  margin: 18px 0;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 0.95rem;
+}
+ 
+.check-list { text-align: left; width: 100%; max-width: 760px; margin: 18px auto; padding: 0 10px; }
+.check-list li { list-style: none; margin-bottom: 10px; padding-left: 28px; position: relative; }
+.check-list li::before { content: "✔️"; position: absolute; left: 0; }
+ 
+.info-block { width: 100%; max-width: 700px; margin: 18px auto; padding: 14px; line-height: 1.6; text-align: justify; }
+.text-narrow { padding: 0 10px; margin-bottom: 12px; }
+ 
+.models-box { text-align: center; }
+.models-box ul { display: inline-block; text-align: left; }
+ 
+/* ===== Tables ===== */
+.result-table table { width: 100%; margin-top: 16px; border-collapse: collapse; background: var(--surface); color: #333; border-radius: 8px; overflow: hidden; }
+.result-table th, .nresult-table td { padding: 10px; border: 1px solid #e6e6e6; text-align: left; }
+.result-table th { background: var(--brand); color: #fff; }
+ 
+/* ===== Vaccine Calculator ===== */
+.date-input { padding: 8px 10px; border-radius: 6px; border: 1px solid #ccc; font-size: 16px; }
+.vaccine-calculator { color: var(--text-dark); margin-top: calc(var(--nav-height) + 20px); text-align: center; }
+.vaccine-calculator h2 { color: #2e4a3b; margin-bottom: 12px; }
+#birthDate { color: var(--text-dark); }
+ 
+/* ===== Desktop lists ===== */
+@media (min-width: 901px) {
+  .container ul {
+    list-style-position: outside;
+    padding-left: 24px;
     text-align: left;
-    font-size: 0.95rem;
-}
-
-/* Робимо список чек-листа красивим */
-.check-list {
+    max-width: 600px;
+    margin: 10px auto;
+  }
+  .container li {
+    display: list-item;
     text-align: left;
-    width: 100%;
-    max-width: 760px;
-    margin: 20px auto;
-    box-sizing: border-box;
-    padding: 0 10px;
-}
-
-.check-list li {
-    list-style: none;
-    margin-bottom: 12px;
-    padding-left: 30px;
-    position: relative;
-}
-
-.check-list li::before {
-    content: "✔️";
-    position: absolute;
-    left: 0;
-    color: var(--brand);
-}
-.info-block {
-    width: 100%;
-    max-width: 700px;
-    margin: 20px auto;
-    padding: 20px;
-    line-height: 1.6;
-    text-align: justify;
-}
-.text-narrow {
-    padding: 0 10px;
-    margin-bottom: 15px;
-}
-
-strong {
-    color: #1b5e20;
-}
-
-/* Списки */
-ul {
-    padding-left: 20px;
-    margin: 10px 0;
-}
-
-li {
-    margin-bottom: 8px;
-}
-/* Адаптивність для телефонів */
-@media (max-width: 480px) {
-    .container {
-        margin: 10px;
-        padding: 15px;
-    }
-}
-/* Робимо текст у календарі темним і видимим */
-.vaccine-calculator {
-    color: var(--text-dark); /* Темно-сірий */
-    margin-top: 100px; /* Додаємо відступ, щоб меню не закривало заголовок */
+  }
+  h1, h2, h3 {
     text-align: center;
+    width: 100%;
+  }
 }
-
-.vaccine-calculator h2 {
-    color: #2e4a3b; /* Ваш фірмовий зелений */
-    margin-bottom: 20px;
-}
-
-/* Налаштування для тексту всередині інпуту */
-#birthDate {
-    color: var(--text-dark);
+ 
+/* ===== Mobile (≤900px) ===== */
+@media (max-width: 900px) {
+  :root { --nav-height: 60px; }
+ 
+  body {
+    padding: calc(var(--nav-height) + 16px) 16px 24px;
+  }
+ 
+  .main-nav {
+    justify-content: flex-start;
+  }
+ 
+  .main-nav .nav-toggle {
+    display: block;
+    position: static;
+    z-index: 1100;
+    font-size: 24px;
+    padding: 8px;
+  }
+ 
+  .main-nav ul {
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: var(--brand);
+    margin: 0;
+    padding: 0;
+    border-radius: 0 0 12px 12px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
+    z-index: 999;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  }
+ 
+  .main-nav.open ul {
+    max-height: 480px;
+    opacity: 1;
+  }
+ 
+  .main-nav ul li { width: 100%; }
+ 
+  .main-nav a {
+    display: block;
+    width: 100%;
+    padding: 14px 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    font-size: 1rem;
+    border-radius: 0;
+  }
+ 
+  .main-nav ul li:last-child a { border-bottom: none; }
+ 
+  .container {
+    padding: 20px 14px 36px;
+    margin: 12px auto;
+    border-radius: 12px;
+  }
 }
